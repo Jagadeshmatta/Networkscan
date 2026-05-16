@@ -1,77 +1,68 @@
-# Network Port Scanner GUI
+Network Port Scanner
+GUI Tool  |  Python + Tkinter  |  MIT License
+Overview
+A lightweight TCP port scanner with a graphical interface. Enter a target host and port range — the scanner checks each port concurrently and identifies open services in real time.
 
-A lightweight TCP port scanner with a graphical user interface built with Python and Tkinter.
+Features
+•	Target host, start port, end port — Simple 3-field interface
+•	Efficient concurrent scanning with configurable thread count — ThreadPoolExecutor scanning
+•	Exposed in the Advanced panel — Configurable timeout and threads
+•	Auto-labels well-known ports (FTP, SSH, HTTP, MySQL, RDP, etc.) — Service identification
+•	Progress bar and elapsed-time counter update live — Real-time progress
+•	Cancel a running scan gracefully — Stop at any time
+•	Export discovered open ports to a .txt file — Save results
+•	Runs on Windows, macOS, and Linux — Cross-platform
 
-## Features
+Requirements
+•	Python 3.7 or newer
+•	Tkinter — included in standard Python; on Debian/Ubuntu install python3-tk
+No third-party packages required.
 
-- **Simple 3-field interface** – enter a target host, start port, and end port
-- **Multi-threaded scanning** – up to 500 concurrent threads for fast results
-- **Service identification** – automatically labels well-known ports (FTP, SSH, HTTP, HTTPS, MySQL, RDP, etc.)
-- **Real-time progress** – progress bar and elapsed-time counter update live during a scan
-- **Stop at any time** – cancel a running scan gracefully
-- **Save results** – export discovered open ports to a `.txt` file
-- **Cross-platform** – runs on Windows, macOS, and Linux
+Installation
+git clone https://github.com/Jagadeshmatta/Networkscan.git
+cd Networkscan
 
-## Requirements
-
-- Python 3.7 or newer
-- Tkinter (included in the standard Python distribution; on Debian/Ubuntu install `python3-tk`)
-
-No third-party packages are required.
-
-## Installation
-
-```bash
-git clone https://github.com/techtrainer20/nmap_portscan_gui.git
-cd nmap_portscan_gui
-```
-
-## Usage
-
-```bash
+Usage
 python portscanergui.py
-```
 
-1. Enter the **Target** – an IP address (e.g. `192.168.1.1`) or hostname (e.g. `scanme.nmap.org`).
-2. Set the **Start Port** and **End Port** (defaults: `1` – `1024`).
-3. Click **Start Scan**. Open ports appear in real time in the results pane.
-4. Click **Stop** to cancel a scan early.
-5. After a scan completes, click **Save Results** to write the open-port list to a text file.
+1. Enter the Target — an IP address or hostname (e.g. 192.168.1.1 or scanme.nmap.org).
+2. Set the Start Port and End Port (defaults: 1 – 1024).
+3. Optionally adjust Timeout and Max Threads in the Advanced panel.
+4. Click Start Scan. Open ports appear in real time in the results pane.
+5. Click Stop to cancel early.
+6. Click Save Results to export the open-port list to a text file.
 
-## Detected Services
-
+Detected Services
 The following ports are automatically labelled:
 
-| Port | Service   |
-|------|-----------|
-| 21   | FTP       |
-| 22   | SSH       |
-| 23   | Telnet    |
-| 25   | SMTP      |
-| 53   | DNS       |
-| 80   | HTTP      |
-| 110  | POP3      |
-| 143  | IMAP      |
-| 443  | HTTPS     |
-| 3306 | MySQL     |
-| 3389 | RDP       |
-| 5900 | VNC       |
-| 8080 | HTTP-Alt  |
+Port	Service
+21	FTP
+22	SSH
+23	Telnet
+25	SMTP
+53	DNS
+80	HTTP
+110	POP3
+143	IMAP
+443	HTTPS
+3306	MySQL
+3389	RDP
+5900	VNC
+8080	HTTP-Alt
+Ports not in the list are reported as Unknown.
 
-Ports not in the list are reported as `Unknown`.
-
-## Project Structure
-
-```
-nmap_portscan_gui/
-├── portscanergui.py   # Main application (scanner + GUI)
+Project Structure
+Networkscan/
+├── portscanergui.py   # Scanner logic + GUI
 └── README.md
-```
 
-## Disclaimer
+Advanced Settings
+Exposed in the UI — no code editing needed:
+•	Timeout (s) — per-port connection timeout. Lower = faster scan, more missed ports on slow networks. Default: 0.5s
+•	Max Threads — concurrent thread count. Lower = gentler on the network. Default: 200
 
+Disclaimer
 Use this tool only on hosts and networks you own or have explicit permission to scan. Unauthorized port scanning may be illegal in your jurisdiction.
 
-## License
-
-This project is released under the [MIT License](https://opensource.org/licenses/MIT).
+License
+Released under the MIT License.
