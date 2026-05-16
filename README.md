@@ -1,68 +1,114 @@
-Network Port Scanner
-GUI Tool  |  Python + Tkinter  |  MIT License
-Overview
-A lightweight TCP port scanner with a graphical interface. Enter a target host and port range — the scanner checks each port concurrently and identifies open services in real time.
+# 🔍 Network Port Scanner
 
-Features
-•	Target host, start port, end port — Simple 3-field interface
-•	Efficient concurrent scanning with configurable thread count — ThreadPoolExecutor scanning
-•	Exposed in the Advanced panel — Configurable timeout and threads
-•	Auto-labels well-known ports (FTP, SSH, HTTP, MySQL, RDP, etc.) — Service identification
-•	Progress bar and elapsed-time counter update live — Real-time progress
-•	Cancel a running scan gracefully — Stop at any time
-•	Export discovered open ports to a .txt file — Save results
-•	Runs on Windows, macOS, and Linux — Cross-platform
+> A lightweight TCP port scanner with a clean GUI — built with Python and Tkinter.
 
-Requirements
-•	Python 3.7 or newer
-•	Tkinter — included in standard Python; on Debian/Ubuntu install python3-tk
+![Python](https://img.shields.io/badge/Python-3.7%2B-blue?logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+---
+
+## Overview
+
+Enter a target host and port range — the scanner checks each port concurrently using a **thread pool** and identifies open services in real time through a graphical interface.
+
+---
+
+## Features
+
+| Feature | Details |
+|---|---|
+| 🖥️ Simple interface | 3-field input: target host, start port, end port |
+| ⚡ Fast scanning | `ThreadPoolExecutor` with configurable thread count |
+| ⚙️ Advanced controls | Timeout and max threads exposed in the UI |
+| 🏷️ Service labels | Auto-identifies FTP, SSH, HTTP, MySQL, RDP, and more |
+| 📊 Live progress | Progress bar + elapsed timer update in real time |
+| ⛔ Graceful stop | Cancel a scan at any point |
+| 💾 Export results | Save open ports to a `.txt` file |
+| 🌐 Cross-platform | Runs on Windows, macOS, and Linux |
+
+---
+
+## Requirements
+
+- Python **3.7+**
+- `tkinter` — ships with standard Python; on Debian/Ubuntu run:
+  ```bash
+  sudo apt install python3-tk
+  ```
+
 No third-party packages required.
 
-Installation
+---
+
+## Installation
+
+```bash
 git clone https://github.com/Jagadeshmatta/Networkscan.git
 cd Networkscan
+```
 
-Usage
+---
+
+## Usage
+
+```bash
 python portscanergui.py
+```
 
-1. Enter the Target — an IP address or hostname (e.g. 192.168.1.1 or scanme.nmap.org).
-2. Set the Start Port and End Port (defaults: 1 – 1024).
-3. Optionally adjust Timeout and Max Threads in the Advanced panel.
-4. Click Start Scan. Open ports appear in real time in the results pane.
-5. Click Stop to cancel early.
-6. Click Save Results to export the open-port list to a text file.
+1. Enter the **Target** — IP address (e.g. `192.168.1.1`) or hostname (e.g. `scanme.nmap.org`)
+2. Set **Start Port** and **End Port** (defaults: `1` – `1024`)
+3. Optionally adjust **Timeout** and **Max Threads** in the Advanced panel
+4. Click **Start Scan** — open ports appear live in the results pane
+5. Click **Stop** to cancel early
+6. Click **Save Results** to export to a `.txt` file
 
-Detected Services
-The following ports are automatically labelled:
+---
 
-Port	Service
-21	FTP
-22	SSH
-23	Telnet
-25	SMTP
-53	DNS
-80	HTTP
-110	POP3
-143	IMAP
-443	HTTPS
-3306	MySQL
-3389	RDP
-5900	VNC
-8080	HTTP-Alt
-Ports not in the list are reported as Unknown.
+## Detected Services
 
-Project Structure
+| Port | Service | Port | Service |
+|------|---------|------|---------|
+| 21 | FTP | 443 | HTTPS |
+| 22 | SSH | 3306 | MySQL |
+| 23 | Telnet | 3389 | RDP |
+| 25 | SMTP | 5900 | VNC |
+| 53 | DNS | 8080 | HTTP-Alt |
+| 80 | HTTP | 110 | POP3 |
+| 143 | IMAP | — | — |
+
+> Ports not in this list are reported as `Unknown`.
+
+---
+
+## Advanced Settings
+
+Exposed directly in the UI — no code editing needed:
+
+| Setting | Description | Default |
+|---|---|---|
+| **Timeout (s)** | Per-port connection timeout. Lower = faster, but may miss ports on slow networks | `0.5` |
+| **Max Threads** | Concurrent thread count. Lower = gentler on the network | `200` |
+
+---
+
+## Project Structure
+
+```
 Networkscan/
 ├── portscanergui.py   # Scanner logic + GUI
 └── README.md
+```
 
-Advanced Settings
-Exposed in the UI — no code editing needed:
-•	Timeout (s) — per-port connection timeout. Lower = faster scan, more missed ports on slow networks. Default: 0.5s
-•	Max Threads — concurrent thread count. Lower = gentler on the network. Default: 200
+---
 
-Disclaimer
-Use this tool only on hosts and networks you own or have explicit permission to scan. Unauthorized port scanning may be illegal in your jurisdiction.
+## ⚠️ Disclaimer
 
-License
-Released under the MIT License.
+Use this tool **only on hosts and networks you own or have explicit permission to scan**.  
+Unauthorized port scanning may be illegal in your jurisdiction.
+
+---
+
+## License
+
+Released under the [MIT License](https://opensource.org/licenses/MIT).
